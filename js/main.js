@@ -3,7 +3,7 @@ function fade2Content() {
     document.body.classList.remove("blackScreen");
 }
 
-const displayObj = document.getElementById('display');
+const displayObj = document.getElementById('character');
 
 const aquBtn = document.getElementById('Aqu');
 const pisBtn = document.getElementById('Pis');
@@ -72,7 +72,6 @@ function userPicked(buttonName) {
     switch (buttonName) {
         case 'Aqu':
             displayObj.src = '../img/char/wizard.png';
-            displayObj.classList.add('visible');
         break;
         case 'Pis':
             displayObj.src = '../img/char/warlock.png';
