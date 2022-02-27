@@ -1,10 +1,11 @@
-function fade2Content() {
-    console.log('fade2Content called');
-    document.body.classList.remove("blackScreen");
-}
-
-const displayObj = document.getElementById('character');
-
+const soundButtons = document.querySelectorAll('.soundtrack');
+const speakers = document.getElementById('speakers');
+const modal = document.getElementById('modal');
+const modalBtn = document.querySelectorAll('.toggle-modal');
+const exploreBtn = document.getElementById('btn-modal-close');
+const userSubmitBtn = document.getElementById('userSubmit');
+const character = document.getElementById('character');
+const cBtn = document.querySelectorAll('.cButton');
 const aquBtn = document.getElementById('Aqu');
 const pisBtn = document.getElementById('Pis');
 const ariBtn = document.getElementById('Ari');
@@ -18,149 +19,156 @@ const scoBtn = document.getElementById('Sco');
 const sagBtn = document.getElementById('Sag');
 const capBtn = document.getElementById('Cap');
 
-aquBtn.addEventListener('click', function() {
-    userPicked('Aqu');
+/*userPicked('blank');*/
+
+userSubmitBtn.addEventListener('click', function() {
+
+    const userBday = new Date(document.getElementById('bday').value);
+
+    const whichMonth = userBday.getUTCMonth() + 1;
+
+    const whichDayOfMonth = userBday.getUTCDate();
+    // Zodiac Algorithm
+    if ((whichMonth == 1 && whichDayOfMonth >= 20) || (whichMonth == 2 && whichDayOfMonth <= 18)) {
+    AstroSign = 'wizard';
+    } else if ((whichMonth == 2 && whichDayOfMonth >= 19) || (whichMonth == 3 && whichDayOfMonth <= 20)) {
+    AstroSign = 'warlock';
+    } else if ((whichMonth == 3 && whichDayOfMonth >= 21) || (whichMonth == 4 && whichDayOfMonth <= 19)) {
+    AstroSign = 'barbarian';
+    } else if ((whichMonth == 4 && whichDayOfMonth >= 20) || (whichMonth == 5 && whichDayOfMonth <= 20)) {
+    AstroSign = 'paladin';
+    } else if ((whichMonth == 5 && whichDayOfMonth >= 21) || (whichMonth == 6 && whichDayOfMonth <= 21)) {
+    AstroSign = 'bard';
+    } else if ((whichMonth == 6 && whichDayOfMonth >= 22) || (whichMonth == 7 && whichDayOfMonth <= 22)) {
+    AstroSign = 'druid';
+    } else if ((whichMonth == 7 && whichDayOfMonth >= 23) || (whichMonth == 8 && whichDayOfMonth <= 22)) {
+    AstroSign = 'sorcerer';
+    } else if ((whichMonth == 8 && whichDayOfMonth >= 23) || (whichMonth == 9 && whichDayOfMonth <= 22)) {
+    AstroSign = 'fighter';
+    } else if ((whichMonth == 9 && whichDayOfMonth >= 23) || (whichMonth == 10 && whichDayOfMonth <= 23)) {
+    AstroSign = 'cleric';
+    } else if ((whichMonth == 10 && whichDayOfMonth >= 24) || (whichMonth == 11 && whichDayOfMonth <= 21)) {
+    AstroSign = 'rogue';
+    } else if ((whichMonth == 11 && whichDayOfMonth >= 22) || (whichMonth == 12 && whichDayOfMonth <= 21)) {
+    AstroSign = 'ranger';
+    } else if ((whichMonth == 12 && whichDayOfMonth >= 22) || (whichMonth == 1 && whichDayOfMonth <= 19)) {
+    AstroSign = 'monk';
+    }
+    userPicked(AstroSign);
 });
 
-pisBtn.addEventListener('click', function() {
-    userPicked('Pis');
+exploreBtn.addEventListener('click', function() {
+    userPicked('blank');
 });
 
-ariBtn.addEventListener('click', function() {
-    userPicked('Ari');
+modalBtn.forEach(button => {
+    button.addEventListener('click', function() {
+        modal.hidden = !modal.hidden;
+        fadeIn();
+      },
+      false
+    );
+  });
+
+cBtn.forEach(button => {
+    const choice = button.dataset.choice;
+    button.addEventListener('click', function() {
+        userPicked(choice);
+        }
+    );
 });
 
-tauBtn.addEventListener('click', function() {
-    userPicked('Tau');
-});
+function fadeIn() {
+    document.body.classList.remove("blackScreen");
+}
 
-gemBtn.addEventListener('click', function() {
-    userPicked('Gem');
-});
+function slideIn() {
+    character.classList.remove("slide");
+    setTimeout(function(){
+        character.classList.add('slide');
+    },100);
+}
 
-canBtn.addEventListener('click', function() {
-    userPicked('Can');
-});
+function userPicked(choice){
+    resetIcons();
+    speakers.src = `../sound/${choice}.mp3`;
+    speakers.play();
+    slideIn();
+    character.src = `../img/char/${choice}.png`;
+    document.getElementById("heading").innerHTML = `${choice}`;
+    charSpecific(choice);
+}
 
-leoBtn.addEventListener('click', function() {
-    userPicked('Leo');
-});
+function resetIcons(){
+    aquBtn.style.backgroundImage = "url('../img/sym/wizard.png')";
+    pisBtn.style.backgroundImage = "url('../img/sym/warlock.png')";
+    ariBtn.style.backgroundImage = "url('../img/sym/barbarian.png')";
+    tauBtn.style.backgroundImage = "url('../img/sym/paladin.png')";
+    gemBtn.style.backgroundImage = "url('../img/sym/bard.png')";
+    canBtn.style.backgroundImage = "url('../img/sym/druid.png')";
+    leoBtn.style.backgroundImage = "url('../img/sym/sorcerer.png')";
+    virBtn.style.backgroundImage = "url('../img/sym/fighter.png')";
+    libBtn.style.backgroundImage = "url('../img/sym/cleric.png')";
+    scoBtn.style.backgroundImage = "url('../img/sym/rogue.png')";
+    sagBtn.style.backgroundImage = "url('../img/sym/ranger.png')";
+    capBtn.style.backgroundImage = "url('../img/sym/monk.png')";
+}
 
-virBtn.addEventListener('click', function() {
-    userPicked('Vir');
-});
-
-libBtn.addEventListener('click', function() {
-    userPicked('Lib');
-});
-
-scoBtn.addEventListener('click', function() {
-    userPicked('Sco');
-});
-
-sagBtn.addEventListener('click', function() {
-    userPicked('Sag');
-});
-
-capBtn.addEventListener('click', function() {
-    userPicked('Cap');
-});
-
-function userPicked(buttonName) {
-    console.log('User picked ' + buttonName);
-
-    switch (buttonName) {
-        case 'Aqu':
-            displayObj.src = '../img/char/wizard.png';
+function charSpecific(choice) { 
+    switch (choice) {
+        case 'blank':
+            document.getElementById("heading").innerHTML = 'Explore';
+            document.getElementById("description").innerHTML = 'Choose a rune below.';
         break;
-        case 'Pis':
-            displayObj.src = '../img/char/warlock.png';
+        case 'wizard':
+            aquBtn.style.backgroundImage = "url('../img/sym/wizard.jpg')";
+            document.getElementById("description").innerHTML = 'The Ponderer. You will uncover life\'s deepest mysteries.';
         break;
-        case 'Ari':
-            displayObj.src = '../img/char/barbarian.png';
+        case 'warlock':
+            pisBtn.style.backgroundImage = "url('../img/sym/warlock.jpg')";
+            document.getElementById("description").innerHTML = 'The Duality. Your inner and outer worlds will shine together.';
         break;
-        case 'Tau':
-            displayObj.src = '../img/char/paladin.png';
+        case 'barbarian':
+            ariBtn.style.backgroundImage = "url('../img/sym/barbarian.jpg')";
+            document.getElementById("description").innerHTML = 'The Fury. Nothing can stop your mighty passion.';
         break;
-        case 'Gem':
-            displayObj.src = '../img/char/bard.png';
+        case 'paladin':
+            tauBtn.style.backgroundImage = "url('../img/sym/paladin.jpg')";
+            document.getElementById("description").innerHTML = 'The Unyielding. You are the light in the darkness.';
         break;
-        case 'Can':
-            displayObj.src = '../img/char/druid.png';
+        case 'bard':
+            gemBtn.style.backgroundImage = "url('../img/sym/bard.jpg')";
+            document.getElementById("description").innerHTML = 'The Beauty. Your joy makes you a friend to all.';
         break;
-        case 'Leo':
-            displayObj.src = '../img/char/sorcerer.png';
+        case 'druid':
+            canBtn.style.backgroundImage = "url('../img/sym/druid.jpg')";
+            document.getElementById("description").innerHTML = 'The Ponderer. You connect us all to the world around.';
         break;
-        case 'Vir':
-            displayObj.src = '../img/char/fighter.png';
+        case 'sorcerer':
+            leoBtn.style.backgroundImage = "url('../img/sym/sorcerer.jpg')";
+            document.getElementById("description").innerHTML = 'The Flame. The world will hear you roar.';
         break;
-        case 'Lib':
-            displayObj.src = '../img/char/cleric.png';
+        case 'fighter':
+            virBtn.style.backgroundImage = "url('../img/sym/fighter.jpg')";
+            document.getElementById("description").innerHTML = 'The Expert. Your dedication is unmatched.';
         break;
-        case 'Sco':
-            displayObj.src = '../img/char/rogue.png';
+        case 'cleric':
+            libBtn.style.backgroundImage = "url('../img/sym/cleric.jpg')";
+            document.getElementById("description").innerHTML = 'The Healer. Your kindness brings people together.';
         break;
-        case 'Sag':
-            displayObj.src = '../img/char/ranger.png';
+        case 'rogue':
+            scoBtn.style.backgroundImage = "url('../img/sym/rogue.jpg')";
+            document.getElementById("description").innerHTML = 'The Mystery. What secrets do you really hide?';
         break;
-        case 'Cap':
-            displayObj.src = '../img/char/monk.png';
+        case 'ranger':
+            sagBtn.style.backgroundImage = "url('../img/sym/ranger.jpg')";
+            document.getElementById("description").innerHTML = 'The Explorer. Your curiosity will take you far.';
+        break;
+        case 'monk':
+            capBtn.style.backgroundImage = "url('../img/sym/monk.jpg')";
+            document.getElementById("description").innerHTML = 'The Eternal. Your patience will conquer any mountain.';
         break;
         default:
             console.log('An unknown button was clicked!');
     }
-
 }
-
-//
-// Calendar input code
-//
-
-const userSubmitBtn = document.getElementById('userSubmit');
-
-// add Event Listener
-userSubmitBtn.addEventListener('click', function() {
-    //console.log('Submit button clicked!');
-
-    const usersFirstName = document.getElementById('name').value;
-    //console.log('Users name is: ' + usersFirstName);
-
-    const userBday = new Date(document.getElementById('bday').value);
-    //console.log(userBday);
-
-    const whichMonth = userBday.getUTCMonth() + 1;
-    //console.log(`Users month is: ${whichMonth}`);
-
-    const whichDayOfMonth = userBday.getUTCDate();
-    //console.log(`Users birth day is: ${whichDayOfMonth}`);
-
-    // Zodiac Algorithm
-    if ((whichMonth == 1 && whichDayOfMonth >= 20) || (whichMonth == 2 && whichDayOfMonth <= 18)) {
-    AstroSign = "Aqu";
-    } else if ((whichMonth == 2 && whichDayOfMonth >= 19) || (whichMonth == 3 && whichDayOfMonth <= 20)) {
-    AstroSign = "Pis";
-    } else if ((whichMonth == 3 && whichDayOfMonth >= 21) || (whichMonth == 4 && whichDayOfMonth <= 19)) {
-    AstroSign = "Ari";
-    } else if ((whichMonth == 4 && whichDayOfMonth >= 20) || (whichMonth == 5 && whichDayOfMonth <= 20)) {
-    AstroSign = "Tau";
-    } else if ((whichMonth == 5 && whichDayOfMonth >= 21) || (whichMonth == 6 && whichDayOfMonth <= 21)) {
-    AstroSign = "Gem";
-    } else if ((whichMonth == 6 && whichDayOfMonth >= 22) || (whichMonth == 7 && whichDayOfMonth <= 22)) {
-    AstroSign = "Can";
-    } else if ((whichMonth == 7 && whichDayOfMonth >= 23) || (whichMonth == 8 && whichDayOfMonth <= 22)) {
-    AstroSign = "Leo";
-    } else if ((whichMonth == 8 && whichDayOfMonth >= 23) || (whichMonth == 9 && whichDayOfMonth <= 22)) {
-    AstroSign = "Vir";
-    } else if ((whichMonth == 9 && whichDayOfMonth >= 23) || (whichMonth == 10 && whichDayOfMonth <= 23)) {
-    AstroSign = "Lib";
-    } else if ((whichMonth == 10 && whichDayOfMonth >= 24) || (whichMonth == 11 && whichDayOfMonth <= 21)) {
-    AstroSign = "Sco";
-    } else if ((whichMonth == 11 && whichDayOfMonth >= 22) || (whichMonth == 12 && whichDayOfMonth <= 21)) {
-    AstroSign = "Sag";
-    } else if ((whichMonth == 12 && whichDayOfMonth >= 22) || (whichMonth == 1 && whichDayOfMonth <= 19)) {
-    AstroSign = "Cap";
-    }
-
-    console.log(AstroSign);
-    userPicked(AstroSign);
-});

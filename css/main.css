@@ -27,7 +27,7 @@
 /*font implementations*/
 h1{
     font-family: 'Dalelands','Times New Roman', serif;
-    font-size: 4.25rem;
+    font-size: 4.5rem;
     text-align: center;
     color: white;
 }
@@ -45,7 +45,27 @@ h3 {
 
 p {
     font-family: 'SourceSansPro', 'Roboto', sans-serif;
+    font-size: 2rem;
+	font-weight: 300;
 
+}
+
+@keyframes shake {
+    0%   {transform: scale(1) rotate(0deg);}
+    50%  {transform: scale(1.1) rotate(-10deg);}
+    100% {transform: scale(1.3) rotate(10deg);}
+  }
+
+@keyframes bump {
+    0% {transform: scale(1);}
+    100% {transform: scale(1.1);}
+}
+
+@keyframes slideIn {
+    0% {transform: translateX(-50px);
+        opacity: 0;}
+    100% {transform: translateX(50px);
+        opacity: 1;}
 }
 
 body {
@@ -62,30 +82,144 @@ body.blackScreen {
     transition: none;
 }
 
+#bday {
+    padding: 1rem;
+    font-family: 'SourceSansPro', 'Roboto', sans-serif;
+    font-size: 1rem;
+	font-weight: 300;
+    border: none;
+    border-radius: 5px;
+}
+
 #wrapper {
     margin: 0 auto;
-    padding: 20px;
+    padding: 1rem;
     max-width: 1280px;
+    min-width: 360px;
     background-color: transparent;
-    margin: 10px auto;
+    margin: .5rem auto;
+    align-self: center;
+}
+
+#middle {
+    display: flex;
+    justify-content: space-between;
+	align-items: center;
+    flex-flow: row wrap;
 }
 
 #character {
+    object-fit: contain;
+    width: 40vw;
+    height: 70vh;
+    min-width: 400px;
+    object-position: center top;
+    background-color: transparent;
+    align-self: center;
+    filter: brightness(.8);
+}
+
+#slide {
+    animation: slideIn ease-in 1s forwards;
+}
+
+#info {
     display: flex;
-    margin: 20px auto;
-    max-width: 400px;
-    max-height: 300px;
-    background-size: cover;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+
+.prompt {
+    color: white;
+}
+
+.clickable {
+    font-family: 'Draconis', Garamond, serif;
+    font-size: 1.75rem;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    width: 10rem;
+}
+
+.clickable:hover {
+    filter: drop-shadow(0px 0px 10px gold);
+    animation: bump ease-in .1s forwards;
+}
+
+.primary {
+    background-color: red;
+    color: white;
+}
+
+.secondary {
+    background-color: white;
+    color: black;
 }
 
 #description {
     background-color: rgba(0, 0, 0, 0.2);
     color: white;
-    filter: blur(3px);
+    backdrop-filter: blur(5px);
+    padding: 2rem;
+    width: 30vw;
+    min-width: 300px;
+    max-width: 80vw;
+    min-height: 6rem;
 }
 
-#heading {
+.heading {
     text-transform: uppercase;
+    max-width: 100%;
+    align-self: center;
+}
+
+.modal {
+	height: 100vh;
+	width: 100vw;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.modal .blanket {
+	background-color: rgba(0, 0, 0, .8);
+
+	height: 100%;
+	width: 100%;
+    margin: 0;
+    background-image: url('../img/back/background.png');
+    background-size: cover;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+
+.modal-body {
+	position: relative;
+	z-index: 101;
+
+	padding: 3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+}
+
+[hidden] {
+	display: none !important;
 }
 
 #buttons {
@@ -94,132 +228,167 @@ body.blackScreen {
     flex-flow: row wrap;
     justify-content: flex-start;
     align-self: center;
+    margin: auto;
+    max-width: 1200px;
+    padding: .5rem;
 }
 
-.zButton {
+.cButton {
     margin: 10px;
     height: 80px;
     width: 80px;
     border: 0;
     justify-self: center;
-    background-color: silver;
+    background-color: transparent;
     background-image: url('../img/sym/barbarian.jpg');
     background-size: cover;
     cursor: pointer;
     border-radius: 15px;
-    filter: brightness(.75) contrast(1.5) saturate(0.5);
 }
 
-.zButton:hover {
-    transform: scale(1.3) rotate(10deg);
-    z-index: 500;
-    filter: brightness(5);
+.cButton:hover {
+    animation: shake ease-in .15s forwards;
 }
 
 #Aqu {
-    background-image: url('../img/sym/wizard.jpg');
+    background-image: url('../img/sym/wizard.png');
+    background-color: #0a2a61;
+    filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #1c6fff);
 }
 
 #Aqu:hover {
-    background-color: #3d6cbc;
-    filter: drop-shadow(0px 0px 10px #3d6cbc);
+    background-color: #1c6fff;
+    filter: brightness(1.5) drop-shadow(0px 0px 10px #1c6fff);
 }
 
 #Pis {
-    background-image: url('../img/sym/warlock.jpg');
+    background-image: url('../img/sym/warlock.png');
+    background-color: #40285c;
+    filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #8e2aff);
 }
 
 #Pis:hover {
-    background-color: #7d4db3;
-    filter: drop-shadow(0px 0px 10px #7d4db3);
+    background-color: #8e2aff;
+    filter: brightness(1.5) drop-shadow(0px 0px 10px #8e2aff);
 }
 
 #Ari {
-    background-image: url('../img/sym/barbarian.jpg');
+    background-image: url('../img/sym/barbarian.png');
+    background-color: #812f19;
+    filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #fc5c30);
 }
 
 #Ari:hover {
-    background-color: #d87e64;
-    filter: drop-shadow(0px 0px 10px #d87e64);
+    background-color: #fc5c30;
+    filter: brightness(1.5) drop-shadow(0px 0px 10px #fc5c30);
 }
 
 #Tau {
-    background-image: url('../img/sym/paladin.jpg');
+    background-image: url('../img/sym/paladin.png');
+    background-color: #58491c;
+    filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #cfa117);
 }
 
 #Tau:hover {
-    background-color: #a88c38;
-    filter: drop-shadow(0px 0px 10px #a88c38);
+    background-color: #cfa117;
+    filter: brightness(1.5) drop-shadow(0px 0px 10px #cfa117);
 }
 
 #Gem {
-    background-image: url('../img/sym/bard.jpg');
+    background-image: url('../img/sym/bard.png');
+    background-color: #473447;
+    filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #d46dd4);
 }
 
 #Gem:hover {
-    background-color: #a577a5;
-    filter: drop-shadow(0px 0px 10px #a577a5);
+    background-color: #d46dd4;
+    filter: brightness(1.5) drop-shadow(0px 0px 10px #d46dd4);
 }
 
 #Can {
-    background-image: url('../img/sym/druid.jpg');
+    background-image: url('../img/sym/druid.png');
+    background-color: #404621;
+    filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #6e7e22);
 }
 
 #Can:hover {
-    background-color: #77833b;
-    filter: drop-shadow(0px 0px 10px #77833b);
+    background-color: #6e7e22;
+    filter: brightness(1.5) drop-shadow(0px 0px 10px #6e7e22);
 }
 
 #Leo {
-    background-image: url('../img/sym/sorcerer.jpg');
+    background-image: url('../img/sym/sorcerer.png');
+    background-color: #492022;
+    filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #9b1c22);
 }
 
 #Leo:hover {
-    background-color: #c4555b;
-    filter: drop-shadow(0px 0px 10px #c4555b);
+    background-color: #9b1c22;
+    filter: brightness(1.5) drop-shadow(0px 0px 10px #9b1c22);
 }
 
 #Vir {
-    background-image: url('../img/sym/fighter.jpg');
+    background-image: url('../img/sym/fighter.png');
+    background-color: #251009;
+    filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #772a10);
 }
 
 #Vir:hover {
-    background-color: #563226;
-    filter: drop-shadow(0px 0px 10px #563226);
+    background-color: #772a10;
+    filter: brightness(1.5) drop-shadow(0px 0px 10px #772a10);
 }
 
 #Lib {
-    background-image: url('../img/sym/cleric.jpg');
+    background-image: url('../img/sym/cleric.png');
+    background-color: rgb(80, 80, 80);
+    filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #fff);
 }
 
 #Lib:hover {
     background-color: #fff;
-    filter: drop-shadow(0px 0px 10px #fff);
+    filter: brightness(1.5) drop-shadow(0px 0px 10px #fff);
 }
 
 #Sco {
-    background-image: url('../img/sym/rogue.jpg');
+    background-image: url('../img/sym/rogue.png');
+    background-color: #21221f;
+    filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #000);
 }
 
 #Sco:hover {
-    background-color: #4f504a;
-    filter: drop-shadow(0px 0px 10px #4f504a);
+    background-color: #000;
+    filter: brightness(1.5) drop-shadow(0px 0px 10px #000);
 }
 
 #Sag {
-    background-image: url('../img/sym/ranger.jpg');
+    background-image: url('../img/sym/ranger.png');
+    background-color: #1f3528;
+    filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #277244);
 }
 
 #Sag:hover {
-    background-color: #467759;
-    filter: drop-shadow(0px 0px 10px #467759);
+    background-color: #277244;
+    filter: brightness(1.5) drop-shadow(0px 0px 10px #277244);
 }
 
 #Cap {
-    background-image: url('../img/sym/monk.jpg');
+    background-image: url('../img/sym/monk.png');
+    background-color: #103746;
+    filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #2f97be);
 }
 
 #Cap:hover {
     background-color: #2f97be;
-    filter: drop-shadow(0px 0px 10px #2f97be);
+    filter: brightness(1.5) drop-shadow(0px 0px 10px #2f97be);
+}
+
+#footer {
+    color: lightgray;
+    justify-self: center;
+    display: flex;
+    font-family: 'SourceSansPro', 'Roboto', sans-serif;
+    font-size: 1rem;
+	font-weight: 300;
+    padding: 1rem .5rem 0;
+    justify-content: center;
 }
