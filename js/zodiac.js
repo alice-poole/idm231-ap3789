@@ -19,8 +19,6 @@ const scoBtn = document.getElementById('Sco');
 const sagBtn = document.getElementById('Sag');
 const capBtn = document.getElementById('Cap');
 
-/*userPicked('blank');*/
-
 userSubmitBtn.addEventListener('click', function() {
 
     const userBday = new Date(document.getElementById('bday').value);
