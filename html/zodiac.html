@@ -11,23 +11,39 @@
   <div id="wrapper">
     <div id="modal" class="modal">
       <div class="modal-body">
-        <div class="modal-content">
           <h1 class="heading">Find your path.</h1>
           <p class="prompt">Enter your birthday to begin.</p>
           <p><input id="bday" type="date"></p>
-          <p><button id="userSubmit" class="toggle-modal clickable primary">Begin</button></p>
+          <p><button id="userSubmit" class="toggle-modal rectButton primary">Begin</button></p>
           <p class="prompt">or</p>
-          <button id="btn-modal-close" class="toggle-modal clickable secondary">Explore</button>
-        </div>
+          <button id="btn-modal-close" class="toggle-modal rectButton secondary">Explore</button>
       </div>
       <div class="blanket"></div>
     </div>
+    <div id="help" class="modal" hidden="true">
+      <div class="modal-body">
+          <h1 class="heading">What is this?</h1>
+          <p class="description" id="helpText">Match to a DUNGEONS & DRAGONS class based on the zodiac.<br>
+            <br>
+            Enter your birthday to be assigned a class.<br>
+            Press "Explore" to freely browse classes instead.<br>
+            Click the runes below to view different classes.<br>
+            <br>
+            Artwork modified from Wizards of the Coast.<br>
+            DUNGEONS & DRAGONS is property of Wizards of the Coast.<br>
+            Built by Alice Poole 2022.
+          </p>
+          <button id="btn-help-close" class="toggle-help rectButton secondary">Close</button>
+      </div>
+      <div class="blanket"></div>
+    </div>
+    <button id="btn-help-open" class="toggle-help">?</button>
     <div id="middle">
-        <img id="character" class="slide" src="../img/char/blank.png" alt="blank"/>
+        <img id="character" class="blackScreen" src="../img/char/blank.png" alt="blank"/>
         <div id="info">
             <h1 class="heading" id="heading">Explore</h1>
-            <p class="description" id="description">Choose a rune below.</p>
-            <button id="btn-modal-open" class="toggle-modal clickable secondary">Start Over</button>
+            <p id="description">Choose a rune below.</p>
+            <button id="btn-modal-open" class="toggle-modal rectButton secondary">Start Over</button>
         </div>
     </div>
     <div id="buttons">

@@ -1,0 +1,225 @@
+/*font files*/
+@font-face {
+    font-family: 'Dalelands';
+    src: url('../fonts/dalelands.woff2') format('woff2')
+}
+@font-face {
+    font-family: 'Draconis';
+    src: url('../fonts/draconis.woff2') format('woff2')
+}
+@font-face {
+    font-family: 'NorseBold';
+    src: url('../fonts/norse-bold.woff2') format('woff2')
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/roboto.woff2') format('woff2')
+}
+@font-face {
+    font-family: 'SourceSansPro';
+    src: url('../fonts/sourcesanspro.woff2') format('woff2')
+}
+@font-face {
+    font-family: 'Vecna';
+    src: url('../fonts/vecna.woff2') format('woff2')
+}
+
+/*font implementations*/
+h1{
+    font-family: 'Dalelands','Times New Roman', serif;
+    font-size: 4.25rem;
+    text-align: center;
+    color: white;
+}
+h2 {
+    font-family: 'Vecna', Georgia, serif;
+    font-size: 2rem;
+    text-align: center;
+}
+h3 {
+    font-family: 'Draconis', Garamond, serif;
+    font-size: 1.75rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+p {
+    font-family: 'SourceSansPro', 'Roboto', sans-serif;
+
+}
+
+body {
+    margin: 20px;
+    background: #000;
+    opacity: 1;
+    transition: opacity 3s;
+    background-image: url('../img/back/background.png');
+    background-size: cover;
+}
+
+body.blackScreen {
+    opacity: 0;
+    transition: none;
+}
+
+#wrapper {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1280px;
+    background-color: transparent;
+    margin: 10px auto;
+}
+
+#character {
+    display: flex;
+    margin: 20px auto;
+    max-width: 400px;
+    max-height: 300px;
+    background-size: cover;
+}
+
+#description {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    filter: blur(3px);
+}
+
+#heading {
+    text-transform: uppercase;
+}
+
+#buttons {
+    background-color: transparent;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-self: center;
+}
+
+.zButton {
+    margin: 10px;
+    height: 80px;
+    width: 80px;
+    border: 0;
+    justify-self: center;
+    background-color: silver;
+    background-image: url('../img/sym/barbarian.jpg');
+    background-size: cover;
+    cursor: pointer;
+    border-radius: 15px;
+    filter: brightness(.75) contrast(1.5) saturate(0.5);
+}
+
+.zButton:hover {
+    transform:   scale(1.3) rotate(10deg) ;
+    z-index: 500;
+    filter: brightness(5);
+}
+
+#Aqu {
+    background-image: url('../img/sym/wizard.jpg');
+}
+
+#Aqu:hover {
+    background-color: #3d6cbc;
+    filter: drop-shadow(0px 0px 10px #3d6cbc);
+}
+
+#Pis {
+    background-image: url('../img/sym/warlock.jpg');
+}
+
+#Pis:hover {
+    background-color: #7d4db3;
+    filter: drop-shadow(0px 0px 10px #7d4db3);
+}
+
+#Ari {
+    background-image: url('../img/sym/barbarian.jpg');
+}
+
+#Ari:hover {
+    background-color: #d87e64;
+    filter: drop-shadow(0px 0px 10px #d87e64);
+}
+
+#Tau {
+    background-image: url('../img/sym/paladin.jpg');
+}
+
+#Tau:hover {
+    background-color: #a88c38;
+    filter: drop-shadow(0px 0px 10px #a88c38);
+}
+
+#Gem {
+    background-image: url('../img/sym/bard.jpg');
+}
+
+#Gem:hover {
+    background-color: #a577a5;
+    filter: drop-shadow(0px 0px 10px #a577a5);
+}
+
+#Can {
+    background-image: url('../img/sym/druid.jpg');
+}
+
+#Can:hover {
+    background-color: #77833b;
+    filter: drop-shadow(0px 0px 10px #77833b);
+}
+
+#Leo {
+    background-image: url('../img/sym/sorcerer.jpg');
+}
+
+#Leo:hover {
+    background-color: #c4555b;
+    filter: drop-shadow(0px 0px 10px #c4555b);
+}
+
+#Vir {
+    background-image: url('../img/sym/fighter.jpg');
+}
+
+#Vir:hover {
+    background-color: #563226;
+    filter: drop-shadow(0px 0px 10px #563226);
+}
+
+#Lib {
+    background-image: url('../img/sym/cleric.jpg');
+}
+
+#Lib:hover {
+    background-color: #fff;
+    filter: drop-shadow(0px 0px 10px #fff);
+}
+
+#Sco {
+    background-image: url('../img/sym/rogue.jpg');
+}
+
+#Sco:hover {
+    background-color: #4f504a;
+    filter: drop-shadow(0px 0px 10px #4f504a);
+}
+
+#Sag {
+    background-image: url('../img/sym/ranger.jpg');
+}
+
+#Sag:hover {
+    background-color: #467759;
+    filter: drop-shadow(0px 0px 10px #467759);
+}
+
+#Cap {
+    background-image: url('../img/sym/monk.jpg');
+}
+
+#Cap:hover {
+    background-color: #2f97be;
+    filter: drop-shadow(0px 0px 10px #2f97be);
+}

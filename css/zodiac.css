@@ -1,4 +1,4 @@
-/*font files*/
+/*Font files*/
 @font-face {
     font-family: 'Dalelands';
     src: url('../fonts/dalelands.woff2') format('woff2')
@@ -24,30 +24,25 @@
     src: url('../fonts/vecna.woff2') format('woff2')
 }
 
-/*font implementations*/
+/*Font implementations*/
 h1{
     font-family: 'Dalelands','Times New Roman', serif;
     font-size: 4.5rem;
     text-align: center;
     color: white;
 }
-h2 {
-    font-family: 'Vecna', Georgia, serif;
-    font-size: 2rem;
-    text-align: center;
-}
-h3 {
-    font-family: 'Draconis', Garamond, serif;
-    font-size: 1.75rem;
-    padding: 1rem;
-    text-align: center;
-}
 
 p {
     font-family: 'SourceSansPro', 'Roboto', sans-serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
 	font-weight: 300;
 
+}
+
+/*Animations*/
+@keyframes bump {
+    0% {transform: scale(1);}
+    100% {transform: scale(1.1);}
 }
 
 @keyframes shake {
@@ -56,203 +51,11 @@ p {
     100% {transform: scale(1.3) rotate(10deg);}
   }
 
-@keyframes bump {
-    0% {transform: scale(1);}
-    100% {transform: scale(1.1);}
-}
-
-@keyframes slideIn {
-    0% {transform: translateX(-50px);
-        opacity: 0;}
-    100% {transform: translateX(50px);
-        opacity: 1;}
-}
-
-body {
-    margin: 20px;
-    background: #000;
-    opacity: 1;
-    transition: opacity 3s;
-    background-image: url('../img/back/background.png');
-    background-size: cover;
-}
-
-body.blackScreen {
-    opacity: 0;
-    transition: none;
-}
-
-#bday {
-    padding: 1rem;
-    font-family: 'SourceSansPro', 'Roboto', sans-serif;
-    font-size: 1rem;
-	font-weight: 300;
-    border: none;
-    border-radius: 5px;
-}
-
-#wrapper {
-    margin: 0 auto;
-    padding: 1rem;
-    max-width: 1280px;
-    min-width: 360px;
-    background-color: transparent;
-    margin: .5rem auto;
-    align-self: center;
-}
-
-#middle {
-    display: flex;
-    justify-content: space-between;
-	align-items: center;
-    flex-flow: row wrap;
-}
-
-#character {
-    object-fit: contain;
-    width: 40vw;
-    height: 70vh;
-    min-width: 400px;
-    object-position: center top;
-    background-color: transparent;
-    align-self: center;
-    filter: brightness(.8);
-}
-
-#slide {
-    animation: slideIn ease-in 1s forwards;
-}
-
-#info {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-flow: column nowrap;
-}
-
-.prompt {
-    color: white;
-}
-
-.clickable {
-    font-family: 'Draconis', Garamond, serif;
-    font-size: 1.75rem;
-    padding: 0.75rem 1rem;
-    text-align: center;
-    border: none;
-    border-radius: 5px;
-    width: 10rem;
-}
-
-.clickable:hover {
-    filter: drop-shadow(0px 0px 10px gold);
-    animation: bump ease-in .1s forwards;
-}
-
-.primary {
-    background-color: red;
-    color: white;
-}
-
-.secondary {
-    background-color: white;
-    color: black;
-}
-
-#description {
-    background-color: rgba(0, 0, 0, 0.2);
-    color: white;
-    backdrop-filter: blur(5px);
-    padding: 2rem;
-    width: 30vw;
-    min-width: 300px;
-    max-width: 80vw;
-    min-height: 6rem;
-}
-
-.heading {
-    text-transform: uppercase;
-    max-width: 100%;
-    align-self: center;
-}
-
-.modal {
-	height: 100vh;
-	width: 100vw;
-
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 99;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
-
-.modal .blanket {
-	background-color: rgba(0, 0, 0, .8);
-
-	height: 100%;
-	width: 100%;
-    margin: 0;
-    background-image: url('../img/back/background.png');
-    background-size: cover;
-
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 100;
-}
-
-.modal-body {
-	position: relative;
-	z-index: 101;
-
-	padding: 3rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	text-align: center;
-}
-
-[hidden] {
-	display: none !important;
-}
-
-#buttons {
-    background-color: transparent;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-self: center;
-    margin: auto;
-    max-width: 1200px;
-    padding: .5rem;
-}
-
-.cButton {
-    margin: 10px;
-    height: 80px;
-    width: 80px;
-    border: 0;
-    justify-self: center;
-    background-color: transparent;
-    background-image: url('../img/sym/barbarian.jpg');
-    background-size: cover;
-    cursor: pointer;
-    border-radius: 15px;
-}
-
-.cButton:hover {
-    animation: shake ease-in .15s forwards;
-}
+/*Zodiac button styles*/
 
 #Aqu {
-    background-image: url('../img/sym/wizard.png');
     background-color: #0a2a61;
+    background-image: url('../img/sym/wizard.png');
     filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #1c6fff);
 }
 
@@ -262,8 +65,8 @@ body.blackScreen {
 }
 
 #Pis {
-    background-image: url('../img/sym/warlock.png');
     background-color: #40285c;
+    background-image: url('../img/sym/warlock.png');
     filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #8e2aff);
 }
 
@@ -273,8 +76,8 @@ body.blackScreen {
 }
 
 #Ari {
-    background-image: url('../img/sym/barbarian.png');
     background-color: #812f19;
+    background-image: url('../img/sym/barbarian.png');
     filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #fc5c30);
 }
 
@@ -284,8 +87,8 @@ body.blackScreen {
 }
 
 #Tau {
-    background-image: url('../img/sym/paladin.png');
     background-color: #58491c;
+    background-image: url('../img/sym/paladin.png');
     filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #cfa117);
 }
 
@@ -295,8 +98,8 @@ body.blackScreen {
 }
 
 #Gem {
-    background-image: url('../img/sym/bard.png');
     background-color: #473447;
+    background-image: url('../img/sym/bard.png');
     filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #d46dd4);
 }
 
@@ -306,8 +109,8 @@ body.blackScreen {
 }
 
 #Can {
-    background-image: url('../img/sym/druid.png');
     background-color: #404621;
+    background-image: url('../img/sym/druid.png');
     filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #6e7e22);
 }
 
@@ -317,8 +120,8 @@ body.blackScreen {
 }
 
 #Leo {
-    background-image: url('../img/sym/sorcerer.png');
     background-color: #492022;
+    background-image: url('../img/sym/sorcerer.png');
     filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #9b1c22);
 }
 
@@ -328,8 +131,8 @@ body.blackScreen {
 }
 
 #Vir {
-    background-image: url('../img/sym/fighter.png');
     background-color: #251009;
+    background-image: url('../img/sym/fighter.png');
     filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #772a10);
 }
 
@@ -339,8 +142,8 @@ body.blackScreen {
 }
 
 #Lib {
-    background-image: url('../img/sym/cleric.png');
     background-color: rgb(80, 80, 80);
+    background-image: url('../img/sym/cleric.png');
     filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #fff);
 }
 
@@ -350,8 +153,8 @@ body.blackScreen {
 }
 
 #Sco {
-    background-image: url('../img/sym/rogue.png');
     background-color: #21221f;
+    background-image: url('../img/sym/rogue.png');
     filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #000);
 }
 
@@ -361,8 +164,8 @@ body.blackScreen {
 }
 
 #Sag {
-    background-image: url('../img/sym/ranger.png');
     background-color: #1f3528;
+    background-image: url('../img/sym/ranger.png');
     filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #277244);
 }
 
@@ -372,8 +175,8 @@ body.blackScreen {
 }
 
 #Cap {
-    background-image: url('../img/sym/monk.png');
     background-color: #103746;
+    background-image: url('../img/sym/monk.png');
     filter: contrast(1.25) saturate(.75) drop-shadow(0px 0px 5px #2f97be);
 }
 
@@ -382,13 +185,223 @@ body.blackScreen {
     filter: brightness(1.5) drop-shadow(0px 0px 10px #2f97be);
 }
 
+/*Miscellaneous CSS styling*/
+#bday {
+    border: none;
+    border-radius: 5px;
+    font-family: 'SourceSansPro', 'Roboto', sans-serif;
+    font-size: 1rem;
+	font-weight: 300;
+    padding: 1rem;
+}
+
+body {
+    background: #000;
+    background-image: url('../img/back/background.png');
+    background-size: cover;
+    margin: 20px;
+
+    opacity: 1;
+    /*transition: opacity 3s;*/
+    transition: 1.5s;
+}
+
+body.blackScreen, #character.blackScreen {
+    opacity: 0;
+    transition: none;
+}
+
+#btn-help-open {
+    border: none;
+    border-radius: 100%;
+    font-family: 'Draconis', Garamond, serif;
+    font-size: 1.75rem;
+    height: 4rem;
+    padding: 1rem 1rem;
+    position: fixed;
+    right: 2rem;
+    text-align: center;
+    top: 2rem;
+    width: 4rem;
+    z-index: 200;
+}
+
+#buttons {
+    align-self: center;
+    background-color: transparent;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    margin: auto;
+    max-width: 1200px;
+    padding: .5rem;
+}
+
+.cButton {
+    background-color: transparent;
+    background-image: url('../img/sym/barbarian.jpg');
+    background-size: cover;
+    border: 0;
+    border-radius: 15px;
+    cursor: pointer;
+    height: 80px;
+    justify-self: center;
+    margin: 10px;
+    width: 80px;
+}
+
+.cButton:hover {
+    animation: shake ease-in .15s forwards;
+}
+
+#character {
+    align-self: center;
+    background-color: transparent;
+    filter: brightness(.8);
+    height: 70vh;
+    min-width: 400px;
+    object-fit: contain;
+    object-position: center top;
+    opacity: 1;
+    transition: 1.5s;
+    width: 40vw;
+}
+
+#description {
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    color: white;
+    line-height: 1.5;
+    max-width: 80vw;
+    min-height: 9rem;
+    min-width: 300px;
+    padding: 2rem;
+    width: 30vw;
+}
+
 #footer {
     color: lightgray;
-    justify-self: center;
     display: flex;
     font-family: 'SourceSansPro', 'Roboto', sans-serif;
     font-size: 1rem;
 	font-weight: 300;
-    padding: 1rem .5rem 0;
     justify-content: center;
+    justify-self: center;
+    padding: 1rem .5rem 0;
+}
+
+.heading {
+    align-self: center;
+    max-width: 100%;
+    text-transform: uppercase;
+}
+
+#helpText {
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    line-height: 1.5;
+    max-width: 80vw;
+    min-height: 6rem;
+    min-width: 300px;
+    padding: 2rem;
+    text-align: left;
+    width: 40vw;
+}
+
+[hidden] {
+	display: none !important;
+}
+
+#info {
+    align-items: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+}
+
+#middle {
+	align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.modal {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+	height: 100vh;
+    justify-content: center;
+	left: 0;
+	position: fixed;
+	top: 0;
+    width: 100vw;
+	z-index: 99;
+}
+
+.modal .blanket {
+	background-color: rgba(0, 0, 0, .8);
+    background-image: url('../img/back/background.png');
+    background-size: cover;
+	height: 100%;
+    left: 0;
+    margin: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
+
+.modal-body {
+    align-items: center;
+    display: flex;
+	flex-direction: column;
+    justify-content: center;
+    padding: 3rem;
+	position: relative;
+	text-align: center;
+    z-index: 101;
+}
+
+.primary {
+    background-color: red;
+    color: white;
+}
+
+.prompt {
+    color: white;
+}
+
+.rectButton {
+    border: none;
+    border-radius: 5px;
+    font-family: 'Draconis', Garamond, serif;
+    font-size: 1.75rem;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    width: 10rem;
+}
+
+.rectButton:hover {
+    animation: bump ease-in .1s forwards;
+}
+
+.rectButton:hover, #btn-help-open:hover {
+    filter: drop-shadow(0px 0px 10px gold);
+
+}
+
+.secondary {
+    background-color: white;
+    color: black;
+}
+
+#wrapper {
+    align-self: center;
+    background-color: transparent;
+    margin: .5rem auto;
+    max-width: 1280px;
+    min-width: 360px;
+    padding: 1rem;
 }
